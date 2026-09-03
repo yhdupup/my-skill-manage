@@ -1,0 +1,6897 @@
+{
+  "components": {
+    "schemas": {
+      "AddMcpServerRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "qualifiedName": {
+            "minLength": 1,
+            "title": "Qualifiedname",
+            "type": "string"
+          }
+        },
+        "required": [
+          "qualifiedName"
+        ],
+        "title": "AddMcpServerRequest",
+        "type": "object"
+      },
+      "AdoptMcpRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "harnesses": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Harnesses"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "observedHarness": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed harness"
+          }
+        },
+        "required": [
+          "name"
+        ],
+        "title": "AdoptMcpRequest",
+        "type": "object"
+      },
+      "BulkManageFailureResponse": {
+        "properties": {
+          "error": {
+            "title": "Error",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "skillRef": {
+            "title": "Skillref",
+            "type": "string"
+          }
+        },
+        "required": [
+          "skillRef",
+          "name",
+          "error"
+        ],
+        "title": "BulkManageFailureResponse",
+        "type": "object"
+      },
+      "BulkManageResultResponse": {
+        "properties": {
+          "failures": {
+            "items": {
+              "$ref": "#/components/schemas/BulkManageFailureResponse"
+            },
+            "title": "Failures",
+            "type": "array"
+          },
+          "managedCount": {
+            "title": "Managedcount",
+            "type": "integer"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "skippedCount": {
+            "title": "Skippedcount",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "ok",
+          "managedCount",
+          "skippedCount",
+          "failures"
+        ],
+        "title": "BulkManageResultResponse",
+        "type": "object"
+      },
+      "CliMarketplaceDetailResponse": {
+        "properties": {
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "githubUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Githuburl"
+          },
+          "hasMcp": {
+            "title": "Hasmcp",
+            "type": "boolean"
+          },
+          "hasSkill": {
+            "title": "Hasskill",
+            "type": "boolean"
+          },
+          "iconUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iconurl"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "installCommand": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Installcommand"
+          },
+          "isOfficial": {
+            "title": "Isofficial",
+            "type": "boolean"
+          },
+          "isTui": {
+            "title": "Istui",
+            "type": "boolean"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "longDescription": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Longdescription"
+          },
+          "marketplaceUrl": {
+            "title": "Marketplaceurl",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          },
+          "sourceType": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sourcetype"
+          },
+          "stars": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stars"
+          },
+          "vendorName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vendorname"
+          },
+          "websiteUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Websiteurl"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "description",
+          "marketplaceUrl",
+          "hasMcp",
+          "hasSkill",
+          "isOfficial",
+          "isTui"
+        ],
+        "title": "CliMarketplaceDetailResponse",
+        "type": "object"
+      },
+      "CliMarketplaceItemResponse": {
+        "properties": {
+          "category": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Category"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "githubUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Githuburl"
+          },
+          "hasMcp": {
+            "title": "Hasmcp",
+            "type": "boolean"
+          },
+          "hasSkill": {
+            "title": "Hasskill",
+            "type": "boolean"
+          },
+          "iconUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iconurl"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "isOfficial": {
+            "title": "Isofficial",
+            "type": "boolean"
+          },
+          "isTui": {
+            "title": "Istui",
+            "type": "boolean"
+          },
+          "language": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Language"
+          },
+          "marketplaceUrl": {
+            "title": "Marketplaceurl",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "slug": {
+            "title": "Slug",
+            "type": "string"
+          },
+          "sourceType": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Sourcetype"
+          },
+          "stars": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stars"
+          },
+          "vendorName": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Vendorname"
+          },
+          "websiteUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Websiteurl"
+          }
+        },
+        "required": [
+          "id",
+          "slug",
+          "name",
+          "description",
+          "marketplaceUrl",
+          "hasMcp",
+          "hasSkill",
+          "isOfficial",
+          "isTui"
+        ],
+        "title": "CliMarketplaceItemResponse",
+        "type": "object"
+      },
+      "CliMarketplacePageResponse": {
+        "properties": {
+          "hasMore": {
+            "title": "Hasmore",
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/CliMarketplaceItemResponse"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "nextOffset": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nextoffset"
+          }
+        },
+        "required": [
+          "items",
+          "hasMore"
+        ],
+        "title": "CliMarketplacePageResponse",
+        "type": "object"
+      },
+      "DetectedProviderResponse": {
+        "properties": {
+          "apiKeySource": {
+            "title": "Apikeysource",
+            "type": "string"
+          },
+          "baseUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Baseurl"
+          },
+          "isAvailable": {
+            "title": "Isavailable",
+            "type": "boolean"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          }
+        },
+        "required": [
+          "provider",
+          "apiKeySource",
+          "isAvailable"
+        ],
+        "title": "DetectedProviderResponse",
+        "type": "object"
+      },
+      "DisableMcpServerRequest": {
+        "properties": {
+          "harness": {
+            "description": "Harness identifier",
+            "minLength": 1,
+            "title": "Harness",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness"
+        ],
+        "title": "DisableMcpServerRequest",
+        "type": "object"
+      },
+      "DisableSkillRequest": {
+        "properties": {
+          "harness": {
+            "description": "Harness identifier",
+            "minLength": 1,
+            "title": "Harness",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness"
+        ],
+        "title": "DisableSkillRequest",
+        "type": "object"
+      },
+      "EnableMcpServerRequest": {
+        "properties": {
+          "config": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Config"
+          },
+          "harness": {
+            "description": "Harness identifier",
+            "minLength": 1,
+            "title": "Harness",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness"
+        ],
+        "title": "EnableMcpServerRequest",
+        "type": "object"
+      },
+      "EnableSkillRequest": {
+        "properties": {
+          "harness": {
+            "description": "Harness identifier",
+            "minLength": 1,
+            "title": "Harness",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness"
+        ],
+        "title": "EnableSkillRequest",
+        "type": "object"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "title": "Detail",
+            "type": "array"
+          }
+        },
+        "title": "HTTPValidationError",
+        "type": "object"
+      },
+      "HarnessCellResponse": {
+        "properties": {
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "interactive": {
+            "title": "Interactive",
+            "type": "boolean"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          },
+          "state": {
+            "enum": [
+              "enabled",
+              "disabled",
+              "found",
+              "empty"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness",
+          "label",
+          "state",
+          "interactive"
+        ],
+        "title": "HarnessCellResponse",
+        "type": "object"
+      },
+      "HarnessColumnResponse": {
+        "properties": {
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "installed": {
+            "title": "Installed",
+            "type": "boolean"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          }
+        },
+        "required": [
+          "harness",
+          "label",
+          "installed"
+        ],
+        "title": "HarnessColumnResponse",
+        "type": "object"
+      },
+      "InstallMarketplaceSkillRequest": {
+        "properties": {
+          "installToken": {
+            "minLength": 1,
+            "title": "Installtoken",
+            "type": "string"
+          }
+        },
+        "required": [
+          "installToken"
+        ],
+        "title": "InstallMarketplaceSkillRequest",
+        "type": "object"
+      },
+      "LLMDetectionResponse": {
+        "properties": {
+          "defaultModel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Defaultmodel"
+          },
+          "defaultProvider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Defaultprovider"
+          },
+          "hasAnyAvailable": {
+            "title": "Hasanyavailable",
+            "type": "boolean"
+          },
+          "providers": {
+            "items": {
+              "$ref": "#/components/schemas/DetectedProviderResponse"
+            },
+            "title": "Providers",
+            "type": "array"
+          }
+        },
+        "required": [
+          "providers",
+          "hasAnyAvailable"
+        ],
+        "title": "LLMDetectionResponse",
+        "type": "object"
+      },
+      "MarketplaceInstallationResponse": {
+        "properties": {
+          "installedSkillRef": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Installedskillref"
+          },
+          "status": {
+            "enum": [
+              "installable",
+              "installed"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "title": "MarketplaceInstallationResponse",
+        "type": "object"
+      },
+      "MarketplaceSkillDetailResponse": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "installToken": {
+            "title": "Installtoken",
+            "type": "string"
+          },
+          "installation": {
+            "$ref": "#/components/schemas/MarketplaceInstallationResponse"
+          },
+          "installs": {
+            "title": "Installs",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "repoImageUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Repoimageurl"
+          },
+          "repoLabel": {
+            "title": "Repolabel",
+            "type": "string"
+          },
+          "sourceLinks": {
+            "$ref": "#/components/schemas/MarketplaceSkillSourceLinksResponse"
+          },
+          "stars": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stars"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "installs",
+          "repoLabel",
+          "sourceLinks",
+          "installation",
+          "installToken"
+        ],
+        "title": "MarketplaceSkillDetailResponse",
+        "type": "object"
+      },
+      "MarketplaceSkillDocumentResponse": {
+        "properties": {
+          "documentMarkdown": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Documentmarkdown"
+          },
+          "status": {
+            "enum": [
+              "ready",
+              "unavailable"
+            ],
+            "title": "Status",
+            "type": "string"
+          }
+        },
+        "required": [
+          "status"
+        ],
+        "title": "MarketplaceSkillDocumentResponse",
+        "type": "object"
+      },
+      "MarketplaceSkillItemResponse": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "installToken": {
+            "title": "Installtoken",
+            "type": "string"
+          },
+          "installation": {
+            "$ref": "#/components/schemas/MarketplaceInstallationResponse"
+          },
+          "installs": {
+            "title": "Installs",
+            "type": "integer"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "repoImageUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Repoimageurl"
+          },
+          "repoLabel": {
+            "title": "Repolabel",
+            "type": "string"
+          },
+          "repoUrl": {
+            "title": "Repourl",
+            "type": "string"
+          },
+          "skillsDetailUrl": {
+            "title": "Skillsdetailurl",
+            "type": "string"
+          },
+          "stars": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stars"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "description",
+          "installs",
+          "repoLabel",
+          "repoUrl",
+          "skillsDetailUrl",
+          "installToken",
+          "installation"
+        ],
+        "title": "MarketplaceSkillItemResponse",
+        "type": "object"
+      },
+      "MarketplaceSkillPageResponse": {
+        "properties": {
+          "hasMore": {
+            "title": "Hasmore",
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/MarketplaceSkillItemResponse"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "nextOffset": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nextoffset"
+          }
+        },
+        "required": [
+          "items",
+          "hasMore"
+        ],
+        "title": "MarketplaceSkillPageResponse",
+        "type": "object"
+      },
+      "MarketplaceSkillSourceLinksResponse": {
+        "properties": {
+          "folderUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Folderurl"
+          },
+          "repoLabel": {
+            "title": "Repolabel",
+            "type": "string"
+          },
+          "repoUrl": {
+            "title": "Repourl",
+            "type": "string"
+          },
+          "skillsDetailUrl": {
+            "title": "Skillsdetailurl",
+            "type": "string"
+          }
+        },
+        "required": [
+          "repoLabel",
+          "repoUrl",
+          "skillsDetailUrl"
+        ],
+        "title": "MarketplaceSkillSourceLinksResponse",
+        "type": "object"
+      },
+      "McpAdoptionIssueResponse": {
+        "properties": {
+          "configPath": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Configpath"
+          },
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "payloadPreview": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Payloadpreview"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness",
+          "label",
+          "name",
+          "reason"
+        ],
+        "title": "McpAdoptionIssueResponse",
+        "type": "object"
+      },
+      "McpApplyConfigResponse": {
+        "properties": {
+          "failed": {
+            "items": {
+              "$ref": "#/components/schemas/McpMutationFailureResponse"
+            },
+            "title": "Failed",
+            "type": "array"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "server": {
+            "$ref": "#/components/schemas/McpServerSpecResponse"
+          },
+          "succeeded": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Succeeded",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ok",
+          "server",
+          "succeeded",
+          "failed"
+        ],
+        "title": "McpApplyConfigResponse",
+        "type": "object"
+      },
+      "McpAvailabilityCheckResponse": {
+        "properties": {
+          "availabilityReason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Availabilityreason"
+          },
+          "availabilityStatus": {
+            "enum": [
+              "available",
+              "unavailable"
+            ],
+            "title": "Availabilitystatus",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok",
+          "name",
+          "availabilityStatus"
+        ],
+        "title": "McpAvailabilityCheckResponse",
+        "type": "object"
+      },
+      "McpBindingResponse": {
+        "properties": {
+          "driftDetail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driftdetail"
+          },
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "state": {
+            "enum": [
+              "managed",
+              "drifted",
+              "unmanaged",
+              "missing"
+            ],
+            "title": "State",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness",
+          "state"
+        ],
+        "title": "McpBindingResponse",
+        "type": "object"
+      },
+      "McpConfigChoiceResponse": {
+        "properties": {
+          "configPath": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Configpath"
+          },
+          "env": {
+            "items": {
+              "$ref": "#/components/schemas/McpEnvEntryResponse"
+            },
+            "title": "Env",
+            "type": "array"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          },
+          "observedHarness": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed harness"
+          },
+          "payloadPreview": {
+            "additionalProperties": true,
+            "title": "Payloadpreview",
+            "type": "object"
+          },
+          "recommended": {
+            "default": false,
+            "title": "Recommended",
+            "type": "boolean"
+          },
+          "sourceKind": {
+            "enum": [
+              "managed",
+              "harness"
+            ],
+            "title": "Sourcekind",
+            "type": "string"
+          },
+          "spec": {
+            "$ref": "#/components/schemas/McpServerSpecResponse"
+          }
+        },
+        "required": [
+          "id",
+          "sourceKind",
+          "label",
+          "payloadPreview",
+          "spec"
+        ],
+        "title": "McpConfigChoiceResponse",
+        "type": "object"
+      },
+      "McpEnvEntryResponse": {
+        "properties": {
+          "isEnvRef": {
+            "title": "Isenvref",
+            "type": "boolean"
+          },
+          "key": {
+            "title": "Key",
+            "type": "string"
+          },
+          "value": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Value"
+          }
+        },
+        "required": [
+          "key",
+          "isEnvRef"
+        ],
+        "title": "McpEnvEntryResponse",
+        "type": "object"
+      },
+      "McpIdentityGroupResponse": {
+        "properties": {
+          "canonicalSpec": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/McpServerSpecResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "identical": {
+            "title": "Identical",
+            "type": "boolean"
+          },
+          "marketplaceLink": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/McpMarketplaceLinkResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "sightings": {
+            "items": {
+              "$ref": "#/components/schemas/McpIdentitySightingResponse"
+            },
+            "title": "Sightings",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "identical",
+          "sightings"
+        ],
+        "title": "McpIdentityGroupResponse",
+        "type": "object"
+      },
+      "McpIdentitySightingResponse": {
+        "properties": {
+          "configPath": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Configpath"
+          },
+          "env": {
+            "items": {
+              "$ref": "#/components/schemas/McpEnvEntryResponse"
+            },
+            "title": "Env",
+            "type": "array"
+          },
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          },
+          "payloadPreview": {
+            "additionalProperties": true,
+            "title": "Payloadpreview",
+            "type": "object"
+          },
+          "recommended": {
+            "default": false,
+            "title": "Recommended",
+            "type": "boolean"
+          },
+          "spec": {
+            "$ref": "#/components/schemas/McpServerSpecResponse"
+          }
+        },
+        "required": [
+          "harness",
+          "label",
+          "payloadPreview",
+          "spec"
+        ],
+        "title": "McpIdentitySightingResponse",
+        "type": "object"
+      },
+      "McpInstallConfigFieldResponse": {
+        "properties": {
+          "choices": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Choices",
+            "type": "array"
+          },
+          "default": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Default"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "format": {
+            "enum": [
+              "string",
+              "number",
+              "boolean",
+              "filepath"
+            ],
+            "title": "Format",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "placeholder": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Placeholder"
+          },
+          "required": {
+            "title": "Required",
+            "type": "boolean"
+          },
+          "secret": {
+            "title": "Secret",
+            "type": "boolean"
+          },
+          "target": {
+            "enum": [
+              "env",
+              "header",
+              "urlVariable",
+              "packageArgument",
+              "runtimeArgument"
+            ],
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "label",
+          "description",
+          "format",
+          "required",
+          "secret",
+          "target"
+        ],
+        "title": "McpInstallConfigFieldResponse",
+        "type": "object"
+      },
+      "McpInstallConfigResponse": {
+        "properties": {
+          "fields": {
+            "items": {
+              "$ref": "#/components/schemas/McpInstallConfigFieldResponse"
+            },
+            "title": "Fields",
+            "type": "array"
+          },
+          "required": {
+            "title": "Required",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "required"
+        ],
+        "title": "McpInstallConfigResponse",
+        "type": "object"
+      },
+      "McpInstallConfigStatusResponse": {
+        "properties": {
+          "configured": {
+            "title": "Configured",
+            "type": "boolean"
+          },
+          "hasFields": {
+            "title": "Hasfields",
+            "type": "boolean"
+          },
+          "missingRequired": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Missingrequired",
+            "type": "array"
+          }
+        },
+        "required": [
+          "hasFields",
+          "missingRequired",
+          "configured"
+        ],
+        "title": "McpInstallConfigStatusResponse",
+        "type": "object"
+      },
+      "McpInventoryColumnResponse": {
+        "properties": {
+          "configPresent": {
+            "title": "Configpresent",
+            "type": "boolean"
+          },
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "installed": {
+            "title": "Installed",
+            "type": "boolean"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          },
+          "mcpUnavailableReason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mcpunavailablereason"
+          },
+          "mcpWritable": {
+            "default": true,
+            "title": "Mcpwritable",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "harness",
+          "label",
+          "installed",
+          "configPresent"
+        ],
+        "title": "McpInventoryColumnResponse",
+        "type": "object"
+      },
+      "McpInventoryEntryResponse": {
+        "properties": {
+          "canEnable": {
+            "title": "Canenable",
+            "type": "boolean"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "enabledStatus": {
+            "enum": [
+              "enabled",
+              "disabled"
+            ],
+            "title": "Enabledstatus",
+            "type": "string"
+          },
+          "installConfigStatus": {
+            "$ref": "#/components/schemas/McpInstallConfigStatusResponse"
+          },
+          "kind": {
+            "enum": [
+              "managed",
+              "unmanaged"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "mcpStatus": {
+            "$ref": "#/components/schemas/McpStatusResponse"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "sightings": {
+            "items": {
+              "$ref": "#/components/schemas/McpBindingResponse"
+            },
+            "title": "Sightings",
+            "type": "array"
+          },
+          "spec": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/McpServerSpecResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "displayName",
+          "kind",
+          "canEnable",
+          "enabledStatus",
+          "mcpStatus",
+          "installConfigStatus",
+          "sightings"
+        ],
+        "title": "McpInventoryEntryResponse",
+        "type": "object"
+      },
+      "McpInventoryIssueResponse": {
+        "properties": {
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "reason": {
+            "title": "Reason",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "reason"
+        ],
+        "title": "McpInventoryIssueResponse",
+        "type": "object"
+      },
+      "McpInventoryResponse": {
+        "properties": {
+          "columns": {
+            "items": {
+              "$ref": "#/components/schemas/McpInventoryColumnResponse"
+            },
+            "title": "Columns",
+            "type": "array"
+          },
+          "entries": {
+            "items": {
+              "$ref": "#/components/schemas/McpInventoryEntryResponse"
+            },
+            "title": "Entries",
+            "type": "array"
+          },
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/McpInventoryIssueResponse"
+            },
+            "title": "Issues",
+            "type": "array"
+          }
+        },
+        "required": [
+          "columns",
+          "entries"
+        ],
+        "title": "McpInventoryResponse",
+        "type": "object"
+      },
+      "McpMarketplaceCapabilityCountsResponse": {
+        "properties": {
+          "prompts": {
+            "title": "Prompts",
+            "type": "integer"
+          },
+          "resources": {
+            "title": "Resources",
+            "type": "integer"
+          },
+          "tools": {
+            "title": "Tools",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "tools",
+          "resources",
+          "prompts"
+        ],
+        "title": "McpMarketplaceCapabilityCountsResponse",
+        "type": "object"
+      },
+      "McpMarketplaceConnectionResponse": {
+        "properties": {
+          "deploymentUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deploymenturl"
+          },
+          "kind": {
+            "title": "Kind",
+            "type": "string"
+          },
+          "stdioArgs": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stdioargs"
+          },
+          "stdioCommand": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stdiocommand"
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "title": "McpMarketplaceConnectionResponse",
+        "type": "object"
+      },
+      "McpMarketplaceDetailResponse": {
+        "properties": {
+          "capabilityCounts": {
+            "$ref": "#/components/schemas/McpMarketplaceCapabilityCountsResponse"
+          },
+          "connections": {
+            "items": {
+              "$ref": "#/components/schemas/McpMarketplaceConnectionResponse"
+            },
+            "title": "Connections",
+            "type": "array"
+          },
+          "deploymentUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Deploymenturl"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "externalUrl": {
+            "title": "Externalurl",
+            "type": "string"
+          },
+          "githubUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Githuburl"
+          },
+          "iconUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iconurl"
+          },
+          "installConfig": {
+            "$ref": "#/components/schemas/McpInstallConfigResponse"
+          },
+          "isRemote": {
+            "title": "Isremote",
+            "type": "boolean"
+          },
+          "managedName": {
+            "title": "Managedname",
+            "type": "string"
+          },
+          "prompts": {
+            "items": {
+              "$ref": "#/components/schemas/McpMarketplacePromptResponse"
+            },
+            "title": "Prompts",
+            "type": "array"
+          },
+          "qualifiedName": {
+            "title": "Qualifiedname",
+            "type": "string"
+          },
+          "resources": {
+            "items": {
+              "$ref": "#/components/schemas/McpMarketplaceResourceResponse"
+            },
+            "title": "Resources",
+            "type": "array"
+          },
+          "tools": {
+            "items": {
+              "$ref": "#/components/schemas/McpMarketplaceToolResponse"
+            },
+            "title": "Tools",
+            "type": "array"
+          },
+          "websiteUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Websiteurl"
+          }
+        },
+        "required": [
+          "qualifiedName",
+          "managedName",
+          "displayName",
+          "description",
+          "isRemote",
+          "connections",
+          "tools",
+          "resources",
+          "prompts",
+          "capabilityCounts",
+          "externalUrl"
+        ],
+        "title": "McpMarketplaceDetailResponse",
+        "type": "object"
+      },
+      "McpMarketplaceItemResponse": {
+        "properties": {
+          "createdAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Createdat"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "externalUrl": {
+            "title": "Externalurl",
+            "type": "string"
+          },
+          "githubUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Githuburl"
+          },
+          "homepage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Homepage"
+          },
+          "iconUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iconurl"
+          },
+          "isDeployed": {
+            "title": "Isdeployed",
+            "type": "boolean"
+          },
+          "isRemote": {
+            "title": "Isremote",
+            "type": "boolean"
+          },
+          "isVerified": {
+            "title": "Isverified",
+            "type": "boolean"
+          },
+          "namespace": {
+            "title": "Namespace",
+            "type": "string"
+          },
+          "qualifiedName": {
+            "title": "Qualifiedname",
+            "type": "string"
+          },
+          "useCount": {
+            "title": "Usecount",
+            "type": "integer"
+          },
+          "websiteUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Websiteurl"
+          }
+        },
+        "required": [
+          "qualifiedName",
+          "namespace",
+          "displayName",
+          "description",
+          "isVerified",
+          "isRemote",
+          "isDeployed",
+          "useCount",
+          "externalUrl"
+        ],
+        "title": "McpMarketplaceItemResponse",
+        "type": "object"
+      },
+      "McpMarketplaceLinkResponse": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "externalUrl": {
+            "title": "Externalurl",
+            "type": "string"
+          },
+          "githubUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Githuburl"
+          },
+          "iconUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Iconurl"
+          },
+          "isRemote": {
+            "title": "Isremote",
+            "type": "boolean"
+          },
+          "isVerified": {
+            "title": "Isverified",
+            "type": "boolean"
+          },
+          "qualifiedName": {
+            "title": "Qualifiedname",
+            "type": "string"
+          },
+          "websiteUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Websiteurl"
+          }
+        },
+        "required": [
+          "qualifiedName",
+          "displayName",
+          "externalUrl",
+          "description",
+          "isRemote",
+          "isVerified"
+        ],
+        "title": "McpMarketplaceLinkResponse",
+        "type": "object"
+      },
+      "McpMarketplacePageResponse": {
+        "properties": {
+          "hasMore": {
+            "title": "Hasmore",
+            "type": "boolean"
+          },
+          "items": {
+            "items": {
+              "$ref": "#/components/schemas/McpMarketplaceItemResponse"
+            },
+            "title": "Items",
+            "type": "array"
+          },
+          "nextOffset": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Nextoffset"
+          }
+        },
+        "required": [
+          "items",
+          "hasMore"
+        ],
+        "title": "McpMarketplacePageResponse",
+        "type": "object"
+      },
+      "McpMarketplaceParameterResponse": {
+        "properties": {
+          "default": {
+            "anyOf": [
+              {},
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Default"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "enum": {
+            "anyOf": [
+              {
+                "items": {},
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Enum"
+          },
+          "maxItems": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maxitems"
+          },
+          "maxLength": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maxlength"
+          },
+          "maximum": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Maximum"
+          },
+          "minItems": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minitems"
+          },
+          "minLength": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minlength"
+          },
+          "minimum": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Minimum"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "required": {
+            "title": "Required",
+            "type": "boolean"
+          },
+          "type": {
+            "title": "Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "type",
+          "description",
+          "required"
+        ],
+        "title": "McpMarketplaceParameterResponse",
+        "type": "object"
+      },
+      "McpMarketplacePromptArgumentResponse": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "required": {
+            "title": "Required",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "required"
+        ],
+        "title": "McpMarketplacePromptArgumentResponse",
+        "type": "object"
+      },
+      "McpMarketplacePromptResponse": {
+        "properties": {
+          "arguments": {
+            "items": {
+              "$ref": "#/components/schemas/McpMarketplacePromptArgumentResponse"
+            },
+            "title": "Arguments",
+            "type": "array"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "arguments"
+        ],
+        "title": "McpMarketplacePromptResponse",
+        "type": "object"
+      },
+      "McpMarketplaceResourceResponse": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "mimeType": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mimetype"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "uri": {
+            "title": "Uri",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "uri",
+          "description"
+        ],
+        "title": "McpMarketplaceResourceResponse",
+        "type": "object"
+      },
+      "McpMarketplaceToolResponse": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "parameters": {
+            "items": {
+              "$ref": "#/components/schemas/McpMarketplaceParameterResponse"
+            },
+            "title": "Parameters",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "parameters"
+        ],
+        "title": "McpMarketplaceToolResponse",
+        "type": "object"
+      },
+      "McpMutationFailureResponse": {
+        "properties": {
+          "error": {
+            "title": "Error",
+            "type": "string"
+          },
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness",
+          "error"
+        ],
+        "title": "McpMutationFailureResponse",
+        "type": "object"
+      },
+      "McpServerDetailResponse": {
+        "properties": {
+          "canEnable": {
+            "title": "Canenable",
+            "type": "boolean"
+          },
+          "configChoices": {
+            "items": {
+              "$ref": "#/components/schemas/McpConfigChoiceResponse"
+            },
+            "title": "Configchoices",
+            "type": "array"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "enabledStatus": {
+            "enum": [
+              "enabled",
+              "disabled"
+            ],
+            "title": "Enabledstatus",
+            "type": "string"
+          },
+          "env": {
+            "items": {
+              "$ref": "#/components/schemas/McpEnvEntryResponse"
+            },
+            "title": "Env",
+            "type": "array"
+          },
+          "installConfigStatus": {
+            "$ref": "#/components/schemas/McpInstallConfigStatusResponse"
+          },
+          "kind": {
+            "enum": [
+              "managed",
+              "unmanaged"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "marketplaceLink": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/McpMarketplaceLinkResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "mcpStatus": {
+            "$ref": "#/components/schemas/McpStatusResponse"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "sightings": {
+            "items": {
+              "$ref": "#/components/schemas/McpBindingResponse"
+            },
+            "title": "Sightings",
+            "type": "array"
+          },
+          "spec": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/McpServerSpecResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "name",
+          "displayName",
+          "kind",
+          "canEnable",
+          "enabledStatus",
+          "mcpStatus",
+          "installConfigStatus",
+          "sightings"
+        ],
+        "title": "McpServerDetailResponse",
+        "type": "object"
+      },
+      "McpServerMutationResponse": {
+        "properties": {
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "server": {
+            "$ref": "#/components/schemas/McpServerSpecResponse"
+          }
+        },
+        "required": [
+          "ok",
+          "server"
+        ],
+        "title": "McpServerMutationResponse",
+        "type": "object"
+      },
+      "McpServerSpecResponse": {
+        "properties": {
+          "args": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Args"
+          },
+          "command": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Command"
+          },
+          "displayName": {
+            "title": "Displayname",
+            "type": "string"
+          },
+          "env": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Env"
+          },
+          "headers": {
+            "anyOf": [
+              {
+                "additionalProperties": {
+                  "type": "string"
+                },
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Headers"
+          },
+          "installedAt": {
+            "title": "Installedat",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "revision": {
+            "title": "Revision",
+            "type": "string"
+          },
+          "source": {
+            "$ref": "#/components/schemas/McpSourceResponse"
+          },
+          "transport": {
+            "enum": [
+              "stdio",
+              "http",
+              "sse"
+            ],
+            "title": "Transport",
+            "type": "string"
+          },
+          "url": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Url"
+          }
+        },
+        "required": [
+          "name",
+          "displayName",
+          "source",
+          "transport",
+          "installedAt",
+          "revision"
+        ],
+        "title": "McpServerSpecResponse",
+        "type": "object"
+      },
+      "McpSetHarnessesResultResponse": {
+        "properties": {
+          "failed": {
+            "items": {
+              "$ref": "#/components/schemas/McpMutationFailureResponse"
+            },
+            "title": "Failed",
+            "type": "array"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "succeeded": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Succeeded",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ok",
+          "succeeded",
+          "failed"
+        ],
+        "title": "McpSetHarnessesResultResponse",
+        "type": "object"
+      },
+      "McpSourceResponse": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "marketplace",
+              "adopted",
+              "manual"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "locator": {
+            "title": "Locator",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "locator"
+        ],
+        "title": "McpSourceResponse",
+        "type": "object"
+      },
+      "McpStatusResponse": {
+        "properties": {
+          "kind": {
+            "enum": [
+              "available",
+              "needs_config",
+              "connection_issue",
+              "unchecked"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          }
+        },
+        "required": [
+          "kind"
+        ],
+        "title": "McpStatusResponse",
+        "type": "object"
+      },
+      "McpUnmanagedByServerResponse": {
+        "properties": {
+          "harnesses": {
+            "items": {
+              "$ref": "#/components/schemas/McpUnmanagedHarnessResponse"
+            },
+            "title": "Harnesses",
+            "type": "array"
+          },
+          "issues": {
+            "items": {
+              "$ref": "#/components/schemas/McpAdoptionIssueResponse"
+            },
+            "title": "Issues",
+            "type": "array"
+          },
+          "servers": {
+            "items": {
+              "$ref": "#/components/schemas/McpIdentityGroupResponse"
+            },
+            "title": "Servers",
+            "type": "array"
+          }
+        },
+        "required": [
+          "harnesses",
+          "servers"
+        ],
+        "title": "McpUnmanagedByServerResponse",
+        "type": "object"
+      },
+      "McpUnmanagedHarnessResponse": {
+        "properties": {
+          "configPath": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Configpath"
+          },
+          "configPresent": {
+            "title": "Configpresent",
+            "type": "boolean"
+          },
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "installed": {
+            "title": "Installed",
+            "type": "boolean"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          },
+          "mcpUnavailableReason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Mcpunavailablereason"
+          },
+          "mcpWritable": {
+            "default": true,
+            "title": "Mcpwritable",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "harness",
+          "label",
+          "installed",
+          "configPresent"
+        ],
+        "title": "McpUnmanagedHarnessResponse",
+        "type": "object"
+      },
+      "OkResponse": {
+        "properties": {
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok"
+        ],
+        "title": "OkResponse",
+        "type": "object"
+      },
+      "ReconcileMcpServerRequest": {
+        "additionalProperties": false,
+        "properties": {
+          "harnesses": {
+            "anyOf": [
+              {
+                "items": {
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Harnesses"
+          },
+          "observedHarness": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Observed harness"
+          },
+          "sourceKind": {
+            "enum": [
+              "managed",
+              "harness"
+            ],
+            "title": "Sourcekind",
+            "type": "string"
+          }
+        },
+        "required": [
+          "sourceKind"
+        ],
+        "title": "ReconcileMcpServerRequest",
+        "type": "object"
+      },
+      "ScanAvailabilityResponse": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "available"
+        ],
+        "title": "ScanAvailabilityResponse",
+        "type": "object"
+      },
+      "ScanConfigItem": {
+        "properties": {
+          "apiKeyMasked": {
+            "title": "Apikeymasked",
+            "type": "string"
+          },
+          "apiVersion": {
+            "title": "Apiversion",
+            "type": "string"
+          },
+          "awsProfile": {
+            "title": "Awsprofile",
+            "type": "string"
+          },
+          "awsRegion": {
+            "title": "Awsregion",
+            "type": "string"
+          },
+          "baseUrl": {
+            "title": "Baseurl",
+            "type": "string"
+          },
+          "consensusRuns": {
+            "title": "Consensusruns",
+            "type": "integer"
+          },
+          "id": {
+            "title": "Id",
+            "type": "integer"
+          },
+          "isActive": {
+            "title": "Isactive",
+            "type": "boolean"
+          },
+          "lastValidatedAt": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Lastvalidatedat"
+          },
+          "lastValidationError": {
+            "default": "",
+            "title": "Lastvalidationerror",
+            "type": "string"
+          },
+          "maxTokens": {
+            "title": "Maxtokens",
+            "type": "integer"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "provider": {
+            "title": "Provider",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "name",
+          "baseUrl",
+          "apiKeyMasked",
+          "model",
+          "provider",
+          "apiVersion",
+          "awsRegion",
+          "awsProfile",
+          "maxTokens",
+          "consensusRuns",
+          "isActive"
+        ],
+        "title": "ScanConfigItem",
+        "type": "object"
+      },
+      "ScanConfigListResponse": {
+        "properties": {
+          "activeId": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Activeid"
+          },
+          "configs": {
+            "items": {
+              "$ref": "#/components/schemas/ScanConfigItem"
+            },
+            "title": "Configs",
+            "type": "array"
+          }
+        },
+        "required": [
+          "configs",
+          "activeId"
+        ],
+        "title": "ScanConfigListResponse",
+        "type": "object"
+      },
+      "ScanConfigSaveRequest": {
+        "properties": {
+          "apiKey": {
+            "title": "Apikey",
+            "type": "string"
+          },
+          "apiVersion": {
+            "default": "",
+            "title": "Apiversion",
+            "type": "string"
+          },
+          "awsProfile": {
+            "default": "",
+            "title": "Awsprofile",
+            "type": "string"
+          },
+          "awsRegion": {
+            "default": "",
+            "title": "Awsregion",
+            "type": "string"
+          },
+          "awsSessionToken": {
+            "default": "",
+            "title": "Awssessiontoken",
+            "type": "string"
+          },
+          "baseUrl": {
+            "title": "Baseurl",
+            "type": "string"
+          },
+          "consensusRuns": {
+            "default": 1,
+            "title": "Consensusruns",
+            "type": "integer"
+          },
+          "maxTokens": {
+            "default": 8192,
+            "title": "Maxtokens",
+            "type": "integer"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "provider": {
+            "default": "",
+            "title": "Provider",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "baseUrl",
+          "apiKey",
+          "model"
+        ],
+        "title": "ScanConfigSaveRequest",
+        "type": "object"
+      },
+      "ScanConfigSecretResponse": {
+        "properties": {
+          "apiKey": {
+            "title": "Apikey",
+            "type": "string"
+          }
+        },
+        "required": [
+          "apiKey"
+        ],
+        "title": "ScanConfigSecretResponse",
+        "type": "object"
+      },
+      "ScanConfigValidateRequest": {
+        "properties": {
+          "apiKey": {
+            "title": "Apikey",
+            "type": "string"
+          },
+          "apiVersion": {
+            "default": "",
+            "title": "Apiversion",
+            "type": "string"
+          },
+          "awsProfile": {
+            "default": "",
+            "title": "Awsprofile",
+            "type": "string"
+          },
+          "awsRegion": {
+            "default": "",
+            "title": "Awsregion",
+            "type": "string"
+          },
+          "awsSessionToken": {
+            "default": "",
+            "title": "Awssessiontoken",
+            "type": "string"
+          },
+          "baseUrl": {
+            "title": "Baseurl",
+            "type": "string"
+          },
+          "consensusRuns": {
+            "default": 1,
+            "title": "Consensusruns",
+            "type": "integer"
+          },
+          "existingConfigId": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Existingconfigid"
+          },
+          "maxTokens": {
+            "default": 8192,
+            "title": "Maxtokens",
+            "type": "integer"
+          },
+          "model": {
+            "title": "Model",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "provider": {
+            "default": "",
+            "title": "Provider",
+            "type": "string"
+          }
+        },
+        "required": [
+          "name",
+          "baseUrl",
+          "apiKey",
+          "model"
+        ],
+        "title": "ScanConfigValidateRequest",
+        "type": "object"
+      },
+      "ScanConfigValidationResponse": {
+        "properties": {
+          "durationMs": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Durationms"
+          },
+          "errorCode": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Errorcode"
+          },
+          "message": {
+            "title": "Message",
+            "type": "string"
+          },
+          "model": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Model"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "provider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Provider"
+          }
+        },
+        "required": [
+          "ok",
+          "message"
+        ],
+        "title": "ScanConfigValidationResponse",
+        "type": "object"
+      },
+      "ScanFindingResponse": {
+        "properties": {
+          "analyzer": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Analyzer"
+          },
+          "category": {
+            "title": "Category",
+            "type": "string"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "filePath": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Filepath"
+          },
+          "id": {
+            "title": "Id",
+            "type": "string"
+          },
+          "lineNumber": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Linenumber"
+          },
+          "metadata": {
+            "additionalProperties": true,
+            "default": {},
+            "title": "Metadata",
+            "type": "object"
+          },
+          "remediation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Remediation"
+          },
+          "ruleId": {
+            "title": "Ruleid",
+            "type": "string"
+          },
+          "severity": {
+            "title": "Severity",
+            "type": "string"
+          },
+          "snippet": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Snippet"
+          },
+          "title": {
+            "title": "Title",
+            "type": "string"
+          }
+        },
+        "required": [
+          "id",
+          "ruleId",
+          "category",
+          "severity",
+          "title",
+          "description"
+        ],
+        "title": "ScanFindingResponse",
+        "type": "object"
+      },
+      "ScanOptionsRequest": {
+        "properties": {
+          "awsProfile": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awsprofile"
+          },
+          "awsRegion": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awsregion"
+          },
+          "awsSessionToken": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Awssessiontoken"
+          },
+          "llmApiKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llmapikey"
+          },
+          "llmApiVersion": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llmapiversion"
+          },
+          "llmBaseUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llmbaseurl"
+          },
+          "llmConsensusRuns": {
+            "default": 1,
+            "title": "Llmconsensusruns",
+            "type": "integer"
+          },
+          "llmMaxTokens": {
+            "default": 8192,
+            "title": "Llmmaxtokens",
+            "type": "integer"
+          },
+          "llmModel": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llmmodel"
+          },
+          "llmProvider": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Llmprovider"
+          },
+          "useLlm": {
+            "default": true,
+            "title": "Usellm",
+            "type": "boolean"
+          }
+        },
+        "title": "ScanOptionsRequest",
+        "type": "object"
+      },
+      "ScanResultResponse": {
+        "properties": {
+          "analyzersUsed": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Analyzersused",
+            "type": "array"
+          },
+          "durationSeconds": {
+            "title": "Durationseconds",
+            "type": "number"
+          },
+          "findings": {
+            "items": {
+              "$ref": "#/components/schemas/ScanFindingResponse"
+            },
+            "title": "Findings",
+            "type": "array"
+          },
+          "findingsCount": {
+            "title": "Findingscount",
+            "type": "integer"
+          },
+          "isSafe": {
+            "title": "Issafe",
+            "type": "boolean"
+          },
+          "maxSeverity": {
+            "title": "Maxseverity",
+            "type": "string"
+          },
+          "skillName": {
+            "title": "Skillname",
+            "type": "string"
+          }
+        },
+        "required": [
+          "skillName",
+          "isSafe",
+          "maxSeverity",
+          "findingsCount",
+          "findings",
+          "analyzersUsed",
+          "durationSeconds"
+        ],
+        "title": "ScanResultResponse",
+        "type": "object"
+      },
+      "SetContextWindowRequest": {
+        "properties": {
+          "contextWindowTokens": {
+            "exclusiveMinimum": 0.0,
+            "title": "Contextwindowtokens",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "contextWindowTokens"
+        ],
+        "title": "SetContextWindowRequest",
+        "type": "object"
+      },
+      "SetContextWindowResponse": {
+        "properties": {
+          "contextWindowTokens": {
+            "title": "Contextwindowtokens",
+            "type": "integer"
+          },
+          "ok": {
+            "const": true,
+            "title": "Ok",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "ok",
+          "contextWindowTokens"
+        ],
+        "title": "SetContextWindowResponse",
+        "type": "object"
+      },
+      "SetHarnessSupportRequest": {
+        "properties": {
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "enabled"
+        ],
+        "title": "SetHarnessSupportRequest",
+        "type": "object"
+      },
+      "SetMcpServerHarnessesRequest": {
+        "properties": {
+          "config": {
+            "anyOf": [
+              {
+                "additionalProperties": true,
+                "type": "object"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Config"
+          },
+          "target": {
+            "enum": [
+              "enabled",
+              "disabled"
+            ],
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "title": "SetMcpServerHarnessesRequest",
+        "type": "object"
+      },
+      "SetSkillHarnessesFailureResponse": {
+        "properties": {
+          "error": {
+            "title": "Error",
+            "type": "string"
+          },
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          }
+        },
+        "required": [
+          "harness",
+          "error"
+        ],
+        "title": "SetSkillHarnessesFailureResponse",
+        "type": "object"
+      },
+      "SetSkillHarnessesRequest": {
+        "properties": {
+          "target": {
+            "description": "Target state to apply to every interactive harness cell on this skill",
+            "enum": [
+              "enabled",
+              "disabled"
+            ],
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "target"
+        ],
+        "title": "SetSkillHarnessesRequest",
+        "type": "object"
+      },
+      "SetSkillHarnessesResultResponse": {
+        "properties": {
+          "failed": {
+            "items": {
+              "$ref": "#/components/schemas/SetSkillHarnessesFailureResponse"
+            },
+            "title": "Failed",
+            "type": "array"
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "succeeded": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Succeeded",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ok",
+          "succeeded",
+          "failed"
+        ],
+        "title": "SetSkillHarnessesResultResponse",
+        "type": "object"
+      },
+      "SettingsHarnessResponse": {
+        "properties": {
+          "harness": {
+            "title": "Harness",
+            "type": "string"
+          },
+          "installed": {
+            "title": "Installed",
+            "type": "boolean"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "logoKey": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Logokey"
+          },
+          "managedLocation": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Managedlocation"
+          },
+          "supportEnabled": {
+            "title": "Supportenabled",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "harness",
+          "label",
+          "supportEnabled",
+          "installed",
+          "managedLocation"
+        ],
+        "title": "SettingsHarnessResponse",
+        "type": "object"
+      },
+      "SettingsResponse": {
+        "properties": {
+          "contextWindowTokens": {
+            "title": "Contextwindowtokens",
+            "type": "integer"
+          },
+          "harnesses": {
+            "items": {
+              "$ref": "#/components/schemas/SettingsHarnessResponse"
+            },
+            "title": "Harnesses",
+            "type": "array"
+          },
+          "storage": {
+            "$ref": "#/components/schemas/SettingsStorageResponse"
+          }
+        },
+        "required": [
+          "contextWindowTokens",
+          "storage",
+          "harnesses"
+        ],
+        "title": "SettingsResponse",
+        "type": "object"
+      },
+      "SettingsStorageResponse": {
+        "properties": {
+          "configDir": {
+            "title": "Configdir",
+            "type": "string"
+          },
+          "dataDir": {
+            "title": "Datadir",
+            "type": "string"
+          },
+          "marketplaceCachePath": {
+            "title": "Marketplacecachepath",
+            "type": "string"
+          },
+          "platform": {
+            "enum": [
+              "macos",
+              "linux",
+              "windows"
+            ],
+            "title": "Platform",
+            "type": "string"
+          },
+          "settingsPath": {
+            "title": "Settingspath",
+            "type": "string"
+          },
+          "skillsStorePath": {
+            "title": "Skillsstorepath",
+            "type": "string"
+          },
+          "stateDir": {
+            "title": "Statedir",
+            "type": "string"
+          }
+        },
+        "required": [
+          "platform",
+          "configDir",
+          "dataDir",
+          "stateDir",
+          "skillsStorePath",
+          "marketplaceCachePath",
+          "settingsPath"
+        ],
+        "title": "SettingsStorageResponse",
+        "type": "object"
+      },
+      "SkillContextUsageResponse": {
+        "properties": {
+          "contextWindowTokens": {
+            "title": "Contextwindowtokens",
+            "type": "integer"
+          },
+          "estimatedTokens": {
+            "anyOf": [
+              {
+                "type": "integer"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Estimatedtokens"
+          },
+          "reason": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Reason"
+          },
+          "status": {
+            "enum": [
+              "normal",
+              "warning",
+              "high",
+              "unavailable"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "usagePercent": {
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Usagepercent"
+          }
+        },
+        "required": [
+          "estimatedTokens",
+          "contextWindowTokens",
+          "usagePercent",
+          "status"
+        ],
+        "title": "SkillContextUsageResponse",
+        "type": "object"
+      },
+      "SkillDetailActionsResponse": {
+        "properties": {
+          "canDelete": {
+            "title": "Candelete",
+            "type": "boolean"
+          },
+          "canManage": {
+            "title": "Canmanage",
+            "type": "boolean"
+          },
+          "deleteHarnessLabels": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Deleteharnesslabels",
+            "type": "array"
+          },
+          "stopManagingHarnessLabels": {
+            "items": {
+              "type": "string"
+            },
+            "title": "Stopmanagingharnesslabels",
+            "type": "array"
+          },
+          "stopManagingStatus": {
+            "anyOf": [
+              {
+                "enum": [
+                  "available",
+                  "disabled_no_enabled"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Stopmanagingstatus"
+          }
+        },
+        "required": [
+          "canManage",
+          "stopManagingStatus",
+          "stopManagingHarnessLabels",
+          "canDelete",
+          "deleteHarnessLabels"
+        ],
+        "title": "SkillDetailActionsResponse",
+        "type": "object"
+      },
+      "SkillDetailResponse": {
+        "properties": {
+          "actions": {
+            "$ref": "#/components/schemas/SkillDetailActionsResponse"
+          },
+          "attentionMessage": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Attentionmessage"
+          },
+          "contextUsage": {
+            "$ref": "#/components/schemas/SkillContextUsageResponse"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "displayStatus": {
+            "enum": [
+              "Managed",
+              "Unmanaged"
+            ],
+            "title": "Displaystatus",
+            "type": "string"
+          },
+          "documentMarkdown": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Documentmarkdown"
+          },
+          "harnessCells": {
+            "items": {
+              "$ref": "#/components/schemas/HarnessCellResponse"
+            },
+            "title": "Harnesscells",
+            "type": "array"
+          },
+          "locations": {
+            "items": {
+              "$ref": "#/components/schemas/SkillLocationResponse"
+            },
+            "title": "Locations",
+            "type": "array"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "skillRef": {
+            "title": "Skillref",
+            "type": "string"
+          },
+          "sourceLinks": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SkillSourceLinksResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          }
+        },
+        "required": [
+          "skillRef",
+          "name",
+          "description",
+          "displayStatus",
+          "attentionMessage",
+          "actions",
+          "harnessCells",
+          "locations",
+          "sourceLinks",
+          "documentMarkdown",
+          "contextUsage"
+        ],
+        "title": "SkillDetailResponse",
+        "type": "object"
+      },
+      "SkillLocationResponse": {
+        "properties": {
+          "detail": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Detail"
+          },
+          "harness": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Harness"
+          },
+          "kind": {
+            "enum": [
+              "shared",
+              "harness"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "path": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Path"
+          },
+          "revision": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Revision"
+          },
+          "scope": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Scope"
+          },
+          "sourceKind": {
+            "title": "Sourcekind",
+            "type": "string"
+          },
+          "sourceLocator": {
+            "title": "Sourcelocator",
+            "type": "string"
+          }
+        },
+        "required": [
+          "kind",
+          "harness",
+          "label",
+          "scope",
+          "path",
+          "revision",
+          "sourceKind",
+          "sourceLocator",
+          "detail"
+        ],
+        "title": "SkillLocationResponse",
+        "type": "object"
+      },
+      "SkillRowActionsResponse": {
+        "properties": {
+          "canDelete": {
+            "title": "Candelete",
+            "type": "boolean"
+          },
+          "canManage": {
+            "title": "Canmanage",
+            "type": "boolean"
+          },
+          "canStopManaging": {
+            "title": "Canstopmanaging",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "canManage",
+          "canStopManaging",
+          "canDelete"
+        ],
+        "title": "SkillRowActionsResponse",
+        "type": "object"
+      },
+      "SkillSourceLinksResponse": {
+        "properties": {
+          "folderUrl": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Folderurl"
+          },
+          "repoLabel": {
+            "title": "Repolabel",
+            "type": "string"
+          },
+          "repoUrl": {
+            "title": "Repourl",
+            "type": "string"
+          }
+        },
+        "required": [
+          "repoLabel",
+          "repoUrl",
+          "folderUrl"
+        ],
+        "title": "SkillSourceLinksResponse",
+        "type": "object"
+      },
+      "SkillSourceStatusResponse": {
+        "properties": {
+          "updateStatus": {
+            "anyOf": [
+              {
+                "enum": [
+                  "update_available",
+                  "no_update_available",
+                  "no_source_available",
+                  "local_changes_detected"
+                ],
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Updatestatus"
+          }
+        },
+        "required": [
+          "updateStatus"
+        ],
+        "title": "SkillSourceStatusResponse",
+        "type": "object"
+      },
+      "SkillTableRowResponse": {
+        "properties": {
+          "actions": {
+            "$ref": "#/components/schemas/SkillRowActionsResponse"
+          },
+          "cells": {
+            "items": {
+              "$ref": "#/components/schemas/HarnessCellResponse"
+            },
+            "title": "Cells",
+            "type": "array"
+          },
+          "contextUsage": {
+            "$ref": "#/components/schemas/SkillContextUsageResponse"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "displayStatus": {
+            "enum": [
+              "Managed",
+              "Unmanaged"
+            ],
+            "title": "Displaystatus",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "skillRef": {
+            "title": "Skillref",
+            "type": "string"
+          }
+        },
+        "required": [
+          "skillRef",
+          "name",
+          "description",
+          "displayStatus",
+          "actions",
+          "cells",
+          "contextUsage"
+        ],
+        "title": "SkillTableRowResponse",
+        "type": "object"
+      },
+      "SkillsPageResponse": {
+        "properties": {
+          "harnessColumns": {
+            "items": {
+              "$ref": "#/components/schemas/HarnessColumnResponse"
+            },
+            "title": "Harnesscolumns",
+            "type": "array"
+          },
+          "rows": {
+            "items": {
+              "$ref": "#/components/schemas/SkillTableRowResponse"
+            },
+            "title": "Rows",
+            "type": "array"
+          },
+          "summary": {
+            "$ref": "#/components/schemas/SkillsSummaryResponse"
+          }
+        },
+        "required": [
+          "summary",
+          "harnessColumns",
+          "rows"
+        ],
+        "title": "SkillsPageResponse",
+        "type": "object"
+      },
+      "SkillsSummaryResponse": {
+        "properties": {
+          "managed": {
+            "title": "Managed",
+            "type": "integer"
+          },
+          "unmanaged": {
+            "title": "Unmanaged",
+            "type": "integer"
+          }
+        },
+        "required": [
+          "managed",
+          "unmanaged"
+        ],
+        "title": "SkillsSummaryResponse",
+        "type": "object"
+      },
+      "SlashCommandDeleteResponse": {
+        "properties": {
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "sync": {
+            "items": {
+              "$ref": "#/components/schemas/SlashSyncEntryResponse"
+            },
+            "title": "Sync",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ok",
+          "sync"
+        ],
+        "title": "SlashCommandDeleteResponse",
+        "type": "object"
+      },
+      "SlashCommandImportRequest": {
+        "properties": {
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "target": {
+            "enum": [
+              "opencode",
+              "claude",
+              "cursor",
+              "codex"
+            ],
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "target",
+          "name"
+        ],
+        "title": "SlashCommandImportRequest",
+        "type": "object"
+      },
+      "SlashCommandListResponse": {
+        "properties": {
+          "commands": {
+            "items": {
+              "$ref": "#/components/schemas/SlashCommandResponse"
+            },
+            "title": "Commands",
+            "type": "array"
+          },
+          "defaultTargets": {
+            "items": {
+              "enum": [
+                "opencode",
+                "claude",
+                "cursor",
+                "codex"
+              ],
+              "type": "string"
+            },
+            "title": "Defaulttargets",
+            "type": "array"
+          },
+          "reviewCommands": {
+            "items": {
+              "$ref": "#/components/schemas/SlashCommandReviewResponse"
+            },
+            "title": "Reviewcommands",
+            "type": "array"
+          },
+          "storePath": {
+            "title": "Storepath",
+            "type": "string"
+          },
+          "syncStatePath": {
+            "title": "Syncstatepath",
+            "type": "string"
+          },
+          "targets": {
+            "items": {
+              "$ref": "#/components/schemas/SlashTargetResponse"
+            },
+            "title": "Targets",
+            "type": "array"
+          }
+        },
+        "required": [
+          "storePath",
+          "syncStatePath",
+          "targets",
+          "defaultTargets",
+          "commands",
+          "reviewCommands"
+        ],
+        "title": "SlashCommandListResponse",
+        "type": "object"
+      },
+      "SlashCommandMutationRequest": {
+        "properties": {
+          "description": {
+            "minLength": 1,
+            "title": "Description",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "prompt": {
+            "minLength": 1,
+            "title": "Prompt",
+            "type": "string"
+          },
+          "targets": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "opencode",
+                    "claude",
+                    "cursor",
+                    "codex"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Targets"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "prompt"
+        ],
+        "title": "SlashCommandMutationRequest",
+        "type": "object"
+      },
+      "SlashCommandMutationResponse": {
+        "properties": {
+          "command": {
+            "anyOf": [
+              {
+                "$ref": "#/components/schemas/SlashCommandResponse"
+              },
+              {
+                "type": "null"
+              }
+            ]
+          },
+          "ok": {
+            "title": "Ok",
+            "type": "boolean"
+          },
+          "sync": {
+            "items": {
+              "$ref": "#/components/schemas/SlashSyncEntryResponse"
+            },
+            "title": "Sync",
+            "type": "array"
+          }
+        },
+        "required": [
+          "ok",
+          "command",
+          "sync"
+        ],
+        "title": "SlashCommandMutationResponse",
+        "type": "object"
+      },
+      "SlashCommandResolveRequest": {
+        "properties": {
+          "action": {
+            "enum": [
+              "restore_managed",
+              "adopt_target",
+              "remove_binding"
+            ],
+            "title": "Action",
+            "type": "string"
+          },
+          "name": {
+            "minLength": 1,
+            "title": "Name",
+            "type": "string"
+          },
+          "target": {
+            "enum": [
+              "opencode",
+              "claude",
+              "cursor",
+              "codex"
+            ],
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "target",
+          "name",
+          "action"
+        ],
+        "title": "SlashCommandResolveRequest",
+        "type": "object"
+      },
+      "SlashCommandResponse": {
+        "properties": {
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "prompt": {
+            "title": "Prompt",
+            "type": "string"
+          },
+          "syncTargets": {
+            "items": {
+              "$ref": "#/components/schemas/SlashSyncEntryResponse"
+            },
+            "title": "Synctargets",
+            "type": "array"
+          }
+        },
+        "required": [
+          "name",
+          "description",
+          "prompt",
+          "syncTargets"
+        ],
+        "title": "SlashCommandResponse",
+        "type": "object"
+      },
+      "SlashCommandReviewResponse": {
+        "properties": {
+          "actions": {
+            "items": {
+              "enum": [
+                "import",
+                "restore_managed",
+                "adopt_target",
+                "remove_binding"
+              ],
+              "type": "string"
+            },
+            "title": "Actions",
+            "type": "array"
+          },
+          "canImport": {
+            "title": "Canimport",
+            "type": "boolean"
+          },
+          "commandExists": {
+            "title": "Commandexists",
+            "type": "boolean"
+          },
+          "description": {
+            "title": "Description",
+            "type": "string"
+          },
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "kind": {
+            "enum": [
+              "unmanaged",
+              "drifted",
+              "missing"
+            ],
+            "title": "Kind",
+            "type": "string"
+          },
+          "name": {
+            "title": "Name",
+            "type": "string"
+          },
+          "path": {
+            "title": "Path",
+            "type": "string"
+          },
+          "prompt": {
+            "title": "Prompt",
+            "type": "string"
+          },
+          "reviewRef": {
+            "title": "Reviewref",
+            "type": "string"
+          },
+          "target": {
+            "enum": [
+              "opencode",
+              "claude",
+              "cursor",
+              "codex"
+            ],
+            "title": "Target",
+            "type": "string"
+          },
+          "targetLabel": {
+            "title": "Targetlabel",
+            "type": "string"
+          }
+        },
+        "required": [
+          "reviewRef",
+          "kind",
+          "target",
+          "targetLabel",
+          "name",
+          "path",
+          "description",
+          "prompt",
+          "commandExists",
+          "canImport",
+          "actions"
+        ],
+        "title": "SlashCommandReviewResponse",
+        "type": "object"
+      },
+      "SlashCommandUpdateRequest": {
+        "properties": {
+          "description": {
+            "minLength": 1,
+            "title": "Description",
+            "type": "string"
+          },
+          "prompt": {
+            "minLength": 1,
+            "title": "Prompt",
+            "type": "string"
+          },
+          "targets": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "opencode",
+                    "claude",
+                    "cursor",
+                    "codex"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Targets"
+          }
+        },
+        "required": [
+          "description",
+          "prompt"
+        ],
+        "title": "SlashCommandUpdateRequest",
+        "type": "object"
+      },
+      "SlashSyncEntryResponse": {
+        "properties": {
+          "error": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Error"
+          },
+          "path": {
+            "title": "Path",
+            "type": "string"
+          },
+          "status": {
+            "enum": [
+              "synced",
+              "removed",
+              "not_selected",
+              "blocked_manual_file",
+              "blocked_modified_file",
+              "missing",
+              "drifted",
+              "failed"
+            ],
+            "title": "Status",
+            "type": "string"
+          },
+          "target": {
+            "enum": [
+              "opencode",
+              "claude",
+              "cursor",
+              "codex"
+            ],
+            "title": "Target",
+            "type": "string"
+          }
+        },
+        "required": [
+          "target",
+          "path",
+          "status"
+        ],
+        "title": "SlashSyncEntryResponse",
+        "type": "object"
+      },
+      "SlashSyncRequest": {
+        "properties": {
+          "targets": {
+            "anyOf": [
+              {
+                "items": {
+                  "enum": [
+                    "opencode",
+                    "claude",
+                    "cursor",
+                    "codex"
+                  ],
+                  "type": "string"
+                },
+                "type": "array"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Targets"
+          }
+        },
+        "title": "SlashSyncRequest",
+        "type": "object"
+      },
+      "SlashTargetResponse": {
+        "properties": {
+          "available": {
+            "title": "Available",
+            "type": "boolean"
+          },
+          "defaultSelected": {
+            "title": "Defaultselected",
+            "type": "boolean"
+          },
+          "docsUrl": {
+            "title": "Docsurl",
+            "type": "string"
+          },
+          "enabled": {
+            "title": "Enabled",
+            "type": "boolean"
+          },
+          "fileGlob": {
+            "title": "Fileglob",
+            "type": "string"
+          },
+          "id": {
+            "enum": [
+              "opencode",
+              "claude",
+              "cursor",
+              "codex"
+            ],
+            "title": "Id",
+            "type": "string"
+          },
+          "invocationPrefix": {
+            "title": "Invocationprefix",
+            "type": "string"
+          },
+          "label": {
+            "title": "Label",
+            "type": "string"
+          },
+          "outputDir": {
+            "title": "Outputdir",
+            "type": "string"
+          },
+          "renderFormat": {
+            "enum": [
+              "frontmatter_markdown",
+              "cursor_plaintext"
+            ],
+            "title": "Renderformat",
+            "type": "string"
+          },
+          "rootPath": {
+            "title": "Rootpath",
+            "type": "string"
+          },
+          "scope": {
+            "enum": [
+              "global",
+              "project"
+            ],
+            "title": "Scope",
+            "type": "string"
+          },
+          "supportNote": {
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Supportnote"
+          },
+          "supportsFrontmatter": {
+            "title": "Supportsfrontmatter",
+            "type": "boolean"
+          }
+        },
+        "required": [
+          "id",
+          "label",
+          "rootPath",
+          "outputDir",
+          "invocationPrefix",
+          "renderFormat",
+          "scope",
+          "docsUrl",
+          "fileGlob",
+          "supportsFrontmatter",
+          "defaultSelected",
+          "enabled",
+          "available"
+        ],
+        "title": "SlashTargetResponse",
+        "type": "object"
+      },
+      "ValidationError": {
+        "properties": {
+          "ctx": {
+            "title": "Context",
+            "type": "object"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "title": "Location",
+            "type": "array"
+          },
+          "msg": {
+            "title": "Message",
+            "type": "string"
+          },
+          "type": {
+            "title": "Error Type",
+            "type": "string"
+          }
+        },
+        "required": [
+          "loc",
+          "msg",
+          "type"
+        ],
+        "title": "ValidationError",
+        "type": "object"
+      }
+    }
+  },
+  "info": {
+    "title": "skill-manager",
+    "version": "0.1.0"
+  },
+  "openapi": "3.1.0",
+  "paths": {
+    "/api/health": {
+      "get": {
+        "operationId": "health_api_health_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Health Api Health Get",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Health"
+      }
+    },
+    "/api/marketplace/clis/items/{slug}": {
+      "get": {
+        "operationId": "get_cli_marketplace_detail_api_marketplace_clis_items__slug__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "slug",
+            "required": true,
+            "schema": {
+              "title": "Slug",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CliMarketplaceDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Cli Marketplace Detail"
+      }
+    },
+    "/api/marketplace/clis/popular": {
+      "get": {
+        "operationId": "popular_cli_marketplace_api_marketplace_clis_popular_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Limit"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CliMarketplacePageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Popular Cli Marketplace"
+      }
+    },
+    "/api/marketplace/clis/search": {
+      "get": {
+        "operationId": "search_cli_marketplace_api_marketplace_clis_search_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "default": "",
+              "title": "Q",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Limit"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/CliMarketplacePageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Search Cli Marketplace"
+      }
+    },
+    "/api/marketplace/install": {
+      "post": {
+        "operationId": "install_marketplace_skill_api_marketplace_install_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/InstallMarketplaceSkillRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Install Marketplace Skill"
+      }
+    },
+    "/api/marketplace/items/{item_id}": {
+      "get": {
+        "operationId": "get_marketplace_detail_api_marketplace_items__item_id__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceSkillDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Marketplace Detail"
+      }
+    },
+    "/api/marketplace/items/{item_id}/document": {
+      "get": {
+        "operationId": "get_marketplace_document_api_marketplace_items__item_id__document_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "item_id",
+            "required": true,
+            "schema": {
+              "title": "Item Id",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceSkillDocumentResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Marketplace Document"
+      }
+    },
+    "/api/marketplace/mcp/items/{qualified_name}": {
+      "get": {
+        "operationId": "get_mcp_marketplace_detail_api_marketplace_mcp_items__qualified_name__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "qualified_name",
+            "required": true,
+            "schema": {
+              "title": "Qualified Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpMarketplaceDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Mcp Marketplace Detail"
+      }
+    },
+    "/api/marketplace/mcp/popular": {
+      "get": {
+        "operationId": "popular_mcp_marketplace_api_marketplace_mcp_popular_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Limit"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpMarketplacePageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Popular Mcp Marketplace"
+      }
+    },
+    "/api/marketplace/mcp/search": {
+      "get": {
+        "operationId": "search_mcp_marketplace_api_marketplace_mcp_search_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": false,
+            "schema": {
+              "default": "",
+              "title": "Q",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Limit"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          },
+          {
+            "in": "query",
+            "name": "remote",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Remote"
+            }
+          },
+          {
+            "in": "query",
+            "name": "verified",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "boolean"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Verified"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpMarketplacePageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Search Mcp Marketplace"
+      }
+    },
+    "/api/marketplace/popular": {
+      "get": {
+        "operationId": "popular_marketplace_api_marketplace_popular_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Limit"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceSkillPageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Popular Marketplace"
+      }
+    },
+    "/api/marketplace/search": {
+      "get": {
+        "operationId": "search_marketplace_api_marketplace_search_get",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "q",
+            "required": true,
+            "schema": {
+              "title": "Q",
+              "type": "string"
+            }
+          },
+          {
+            "in": "query",
+            "name": "limit",
+            "required": false,
+            "schema": {
+              "anyOf": [
+                {
+                  "type": "integer"
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "title": "Limit"
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "required": false,
+            "schema": {
+              "default": 0,
+              "title": "Offset",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MarketplaceSkillPageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Search Marketplace"
+      }
+    },
+    "/api/mcp/servers": {
+      "get": {
+        "operationId": "list_mcp_servers_api_mcp_servers_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpInventoryResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Mcp Servers"
+      },
+      "post": {
+        "operationId": "install_mcp_server_api_mcp_servers_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddMcpServerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpServerMutationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Install Mcp Server"
+      }
+    },
+    "/api/mcp/servers/{name}": {
+      "delete": {
+        "operationId": "uninstall_mcp_server_api_mcp_servers__name__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpSetHarnessesResultResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Uninstall Mcp Server"
+      },
+      "get": {
+        "operationId": "get_mcp_server_api_mcp_servers__name__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpServerDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Mcp Server"
+      }
+    },
+    "/api/mcp/servers/{name}/availability/check": {
+      "post": {
+        "operationId": "check_mcp_server_availability_api_mcp_servers__name__availability_check_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpAvailabilityCheckResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Check Mcp Server Availability"
+      }
+    },
+    "/api/mcp/servers/{name}/disable": {
+      "post": {
+        "operationId": "disable_mcp_server_api_mcp_servers__name__disable_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisableMcpServerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Disable Mcp Server"
+      }
+    },
+    "/api/mcp/servers/{name}/enable": {
+      "post": {
+        "operationId": "enable_mcp_server_api_mcp_servers__name__enable_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnableMcpServerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Enable Mcp Server"
+      }
+    },
+    "/api/mcp/servers/{name}/reconcile": {
+      "post": {
+        "operationId": "reconcile_mcp_server_api_mcp_servers__name__reconcile_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ReconcileMcpServerRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpApplyConfigResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Reconcile Mcp Server"
+      }
+    },
+    "/api/mcp/servers/{name}/set-harnesses": {
+      "post": {
+        "operationId": "set_mcp_server_harnesses_api_mcp_servers__name__set_harnesses_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetMcpServerHarnessesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpSetHarnessesResultResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Mcp Server Harnesses"
+      }
+    },
+    "/api/mcp/unmanaged/adopt": {
+      "post": {
+        "operationId": "adopt_mcp_server_api_mcp_unmanaged_adopt_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AdoptMcpRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpApplyConfigResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Adopt Mcp Server"
+      }
+    },
+    "/api/mcp/unmanaged/by-server": {
+      "get": {
+        "operationId": "list_unmanaged_by_server_api_mcp_unmanaged_by_server_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/McpUnmanagedByServerResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Unmanaged By Server"
+      }
+    },
+    "/api/scan/availability": {
+      "get": {
+        "operationId": "check_scan_availability_api_scan_availability_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanAvailabilityResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Check Scan Availability"
+      }
+    },
+    "/api/scan/configs": {
+      "get": {
+        "operationId": "list_scan_configs_api_scan_configs_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanConfigListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Scan Configs"
+      },
+      "post": {
+        "operationId": "create_scan_config_api_scan_configs_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScanConfigSaveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanConfigItem"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Scan Config"
+      }
+    },
+    "/api/scan/configs/validate": {
+      "post": {
+        "operationId": "validate_scan_config_api_scan_configs_validate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScanConfigValidateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanConfigValidationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Validate Scan Config"
+      }
+    },
+    "/api/scan/configs/{config_id}": {
+      "delete": {
+        "operationId": "delete_scan_config_api_scan_configs__config_id__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "config_id",
+            "required": true,
+            "schema": {
+              "title": "Config Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Scan Config"
+      },
+      "put": {
+        "operationId": "update_scan_config_api_scan_configs__config_id__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "config_id",
+            "required": true,
+            "schema": {
+              "title": "Config Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/ScanConfigSaveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanConfigItem"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Update Scan Config"
+      }
+    },
+    "/api/scan/configs/{config_id}/active": {
+      "put": {
+        "operationId": "set_active_scan_config_api_scan_configs__config_id__active_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "config_id",
+            "required": true,
+            "schema": {
+              "title": "Config Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {}
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Active Scan Config"
+      }
+    },
+    "/api/scan/configs/{config_id}/secret": {
+      "get": {
+        "operationId": "reveal_scan_config_secret_api_scan_configs__config_id__secret_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "config_id",
+            "required": true,
+            "schema": {
+              "title": "Config Id",
+              "type": "integer"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanConfigSecretResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Reveal Scan Config Secret"
+      }
+    },
+    "/api/scan/llm/detection": {
+      "get": {
+        "operationId": "detect_llm_api_scan_llm_detection_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LLMDetectionResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Detect Llm"
+      }
+    },
+    "/api/scan/skills/{skill_ref}": {
+      "post": {
+        "operationId": "scan_skill_api_scan_skills__skill_ref__post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "anyOf": [
+                  {
+                    "$ref": "#/components/schemas/ScanOptionsRequest"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ],
+                "title": "Body"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ScanResultResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Scan Skill"
+      }
+    },
+    "/api/settings": {
+      "get": {
+        "operationId": "settings_api_settings_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SettingsResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Settings"
+      }
+    },
+    "/api/settings/context-window": {
+      "put": {
+        "operationId": "set_context_window_api_settings_context_window_put",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetContextWindowRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetContextWindowResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Context Window"
+      }
+    },
+    "/api/settings/harnesses/{harness}/support": {
+      "put": {
+        "operationId": "set_harness_support_api_settings_harnesses__harness__support_put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "harness",
+            "required": true,
+            "schema": {
+              "title": "Harness",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetHarnessSupportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "additionalProperties": true,
+                  "title": "Response Set Harness Support Api Settings Harnesses  Harness  Support Put",
+                  "type": "object"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Harness Support"
+      }
+    },
+    "/api/skills": {
+      "get": {
+        "operationId": "list_skills_api_skills_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillsPageResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Skills"
+      }
+    },
+    "/api/skills/manage-all": {
+      "post": {
+        "operationId": "manage_all_skills_api_skills_manage_all_post",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/BulkManageResultResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "Manage All Skills"
+      }
+    },
+    "/api/skills/{skill_ref}": {
+      "get": {
+        "operationId": "get_skill_detail_api_skills__skill_ref__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillDetailResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Skill Detail"
+      }
+    },
+    "/api/skills/{skill_ref}/delete": {
+      "post": {
+        "operationId": "delete_skill_api_skills__skill_ref__delete_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Skill"
+      }
+    },
+    "/api/skills/{skill_ref}/disable": {
+      "post": {
+        "operationId": "disable_skill_api_skills__skill_ref__disable_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/DisableSkillRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Disable Skill"
+      }
+    },
+    "/api/skills/{skill_ref}/enable": {
+      "post": {
+        "operationId": "enable_skill_api_skills__skill_ref__enable_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/EnableSkillRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Enable Skill"
+      }
+    },
+    "/api/skills/{skill_ref}/manage": {
+      "post": {
+        "operationId": "manage_skill_api_skills__skill_ref__manage_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Manage Skill"
+      }
+    },
+    "/api/skills/{skill_ref}/set-harnesses": {
+      "post": {
+        "operationId": "set_skill_harnesses_api_skills__skill_ref__set_harnesses_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SetSkillHarnessesRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SetSkillHarnessesResultResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Set Skill Harnesses"
+      }
+    },
+    "/api/skills/{skill_ref}/source-status": {
+      "get": {
+        "operationId": "get_skill_source_status_api_skills__skill_ref__source_status_get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SkillSourceStatusResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Skill Source Status"
+      }
+    },
+    "/api/skills/{skill_ref}/unmanage": {
+      "post": {
+        "operationId": "unmanage_skill_api_skills__skill_ref__unmanage_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Unmanage Skill"
+      }
+    },
+    "/api/skills/{skill_ref}/update": {
+      "post": {
+        "operationId": "update_skill_api_skills__skill_ref__update_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "skill_ref",
+            "required": true,
+            "schema": {
+              "title": "Skill Ref",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/OkResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Update Skill"
+      }
+    },
+    "/api/slash-commands": {
+      "get": {
+        "operationId": "list_slash_commands_api_slash_commands_get",
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandListResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          }
+        },
+        "summary": "List Slash Commands"
+      },
+      "post": {
+        "operationId": "create_slash_command_api_slash_commands_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlashCommandMutationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandMutationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Create Slash Command"
+      }
+    },
+    "/api/slash-commands/review/import": {
+      "post": {
+        "operationId": "import_slash_command_api_slash_commands_review_import_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlashCommandImportRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandMutationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Import Slash Command"
+      }
+    },
+    "/api/slash-commands/review/resolve": {
+      "post": {
+        "operationId": "resolve_slash_command_review_api_slash_commands_review_resolve_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlashCommandResolveRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandMutationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Resolve Slash Command Review"
+      }
+    },
+    "/api/slash-commands/{name}": {
+      "delete": {
+        "operationId": "delete_slash_command_api_slash_commands__name__delete",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandDeleteResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Delete Slash Command"
+      },
+      "get": {
+        "operationId": "get_slash_command_api_slash_commands__name__get",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Get Slash Command"
+      },
+      "put": {
+        "operationId": "update_slash_command_api_slash_commands__name__put",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlashCommandUpdateRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandMutationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Update Slash Command"
+      }
+    },
+    "/api/slash-commands/{name}/sync": {
+      "post": {
+        "operationId": "sync_slash_command_api_slash_commands__name__sync_post",
+        "parameters": [
+          {
+            "in": "path",
+            "name": "name",
+            "required": true,
+            "schema": {
+              "title": "Name",
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SlashSyncRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SlashCommandMutationResponse"
+                }
+              }
+            },
+            "description": "Successful Response"
+          },
+          "422": {
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            },
+            "description": "Validation Error"
+          }
+        },
+        "summary": "Sync Slash Command"
+      }
+    }
+  }
+}

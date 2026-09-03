@@ -1,0 +1,58 @@
+@layer features {
+
+/* -------------------------------------------------------------------------- */
+/* Estimated context usage                                                    */
+/* -------------------------------------------------------------------------- */
+
+.usage-cell {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 2px var(--space-3);
+  border-radius: var(--radius-pill);
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: var(--color-text);
+  background: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+}
+
+.usage-cell--normal {
+  color: var(--color-usage-normal);
+  border-color: color-mix(in srgb, var(--color-usage-normal) 50%, var(--color-border));
+  background: color-mix(in srgb, var(--color-usage-normal) 12%, var(--color-surface-raised));
+}
+
+.usage-cell--warning {
+  color: var(--color-usage-warning);
+  border-color: color-mix(in srgb, var(--color-usage-warning) 50%, var(--color-border));
+  background: color-mix(in srgb, var(--color-usage-warning) 14%, var(--color-surface-raised));
+}
+
+.usage-cell--high {
+  color: var(--color-usage-high);
+  border-color: color-mix(in srgb, var(--color-usage-high) 50%, var(--color-border));
+  background: color-mix(in srgb, var(--color-usage-high) 14%, var(--color-surface-raised));
+}
+
+.usage-cell--unavailable {
+  color: var(--color-usage-unavailable);
+  background: transparent;
+  border-color: var(--color-border);
+}
+
+.usage-sort-toggle {
+  border-color: var(--color-border);
+}
+
+.usage-sort-toggle--active {
+  border-color: var(--color-accent);
+  background: var(--color-accent-soft);
+}
+
+.skill-card__usage {
+  display: flex;
+  margin-top: var(--space-3);
+}
+
+}

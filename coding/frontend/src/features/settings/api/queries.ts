@@ -1,0 +1,120 @@
+import { useMutation, useQuery, useQueryClient, type QueryClient } from "@tanstack/react-query";
+
+import { queryPolicy } from "../../../lib/query";
+import { invalidateMcpQueries } from "../../mcp/public";
+import { invalidateSkillsQueries } from "../../skills/public";
+import { fetchSettings, updateContextWindow, updateHarnessSupport } from "./client";
+import type { ContextWindowTokens, SettingsData } from "./types";
+
+const SETTINGS_STALE_TIME_MS = 60_000;
+const SETTINGS_GC_TIME_MS = 15 * 60_000;
+
+export const settingsKeys = {
+  all: ["settings"] as const,
+  detail: () => ["settings", "detail"] as const,
+  contextWindow: () => ["settings", "context-window"] as const,
+};
+
+export function useSettingsQuery() {
+  return useQuery({
+    queryKey: settingsKeys.detail(),
+    queryFn: fetchSettings,
+    ...queryPolicy(SETTINGS_STALE_TIME_MS, SETTINGS_GC_TIME_MS),
+  });
+}
+
+/**
+ * Lightweight view that only exposes the reference context window.
+ *
+ * Internally reuses the shared `useSettingsQuery` cache so we never fire a
+ * second request. The settings page can render the value while the mutation
+ * uses the same source of truth.
+ */
+export function useContextWindowQuery() {
+  const query = useSettingsQuery();
+  return {
+    data: query.data?.contextWindowTokens,
+    isLoading: query.isLoading,
+    error: query.error,
+  } as const;
+}
+
+export async function invalidateSettingsQueries(queryClient: QueryClient): Promise<void> {
+  await queryClient.invalidateQueries({ queryKey: settingsKeys.all });
+}
+
+async function invalidateRelatedQueries(queryClient: QueryClient): Promise<void> {
+  await Promise.all([
+    invalidateSkillsQueries(queryClient),
+    invalidateMcpQueries(queryClient),
+    invalidateSettingsQueries(queryClient),
+  ]);
+}
+
+export function useHarnessSupportMutation() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: ({ harness, enabled }: { harness: string; enabled: boolean }) =>
+      updateHarnessSupport(harness, enabled),
+    onMutate: async ({ harness, enabled }) => {
+      await queryClient.cancelQueries({ queryKey: settingsKeys.detail() });
+      const previousSettings = queryClient.getQueryData<SettingsData>(settingsKeys.detail());
+      if (previousSettings) {
+        queryClient.setQueryData<SettingsData>(settingsKeys.detail(), {
+          ...previousSettings,
+          harnesses: previousSettings.harnesses.map((item) =>
+            item.harness === harness
+              ? {
+                  ...item,
+                  supportEnabled: enabled,
+                }
+              : item,
+          ),
+        });
+      }
+      return { previousSettings };
+    },
+    onError: (_error, _variables, context) => {
+      if (context?.previousSettings) {
+        queryClient.setQueryData(settingsKeys.detail(), context.previousSettings);
+      }
+    },
+    onSuccess: async () => {
+      await invalidateRelatedQueries(queryClient);
+    },
+  });
+}
+
+/**
+ * Save the reference context window and propagate the change to every
+ * downstream query. The mutation performs optimistic updates with a
+ * snapshot rollback, mirroring {@link useHarnessSupportMutation}, so
+ * failed PUTs do not leave stale values in the cache.
+ */
+export function useContextWindowMutation() {
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: (value: ContextWindowTokens) => updateContextWindow(value),
+    onMutate: async (value) => {
+      await queryClient.cancelQueries({ queryKey: settingsKeys.detail() });
+      const previousSettings = queryClient.getQueryData<SettingsData>(settingsKeys.detail());
+      if (previousSettings) {
+        queryClient.setQueryData<SettingsData>(settingsKeys.detail(), {
+          ...previousSettings,
+          contextWindowTokens: value,
+        });
+      }
+      return { previousSettings };
+    },
+    onError: (_error, _variables, context) => {
+      if (context?.previousSettings) {
+        queryClient.setQueryData(settingsKeys.detail(), context.previousSettings);
+      }
+    },
+    onSuccess: async () => {
+      await invalidateRelatedQueries(queryClient);
+    },
+  });
+}

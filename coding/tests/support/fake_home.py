@@ -1,0 +1,283 @@
+from __future__ import annotations
+
+from dataclasses import dataclass
+import os
+from pathlib import Path
+import plistlib
+
+from skill_manager.application.skills.manifest import (
+    SkillStoreEntry,
+    SkillStoreManifest,
+    write_skill_store_manifest,
+)
+from skill_manager.application.skills.package import fingerprint_package
+from skill_manager.directory_links import create_directory_link
+
+
+@dataclass(frozen=True)
+class FakeHomeSpec:
+    root: Path
+    home: Path
+    xdg_config_home: Path
+    xdg_data_home: Path
+    xdg_state_home: Path
+
+    @property
+    def skills_store_root(self) -> Path:
+        return self.xdg_data_home / "skill-manager" / "shared"
+
+    @property
+    def codex_root(self) -> Path:
+        return self.home / ".agents" / "skills"
+
+    @property
+    def codex_legacy_root(self) -> Path:
+        return self.home / ".codex" / "skills"
+
+    @property
+    def claude_root(self) -> Path:
+        return self.home / ".claude" / "skills"
+
+    @property
+    def cursor_root(self) -> Path:
+        return self.home / ".cursor" / "skills"
+
+    @property
+    def cursor_owned_root(self) -> Path:
+        return self.home / ".cursor" / "skills-cursor"
+
+    @property
+    def opencode_root(self) -> Path:
+        return self.xdg_config_home / "opencode" / "skills"
+
+    @property
+    def openclaw_home(self) -> Path:
+        return self.home / ".openclaw"
+
+    @property
+    def openclaw_managed_root(self) -> Path:
+        return self.openclaw_home / "skills"
+
+    @property
+    def hermes_home(self) -> Path:
+        return self.home / ".hermes"
+
+    @property
+    def hermes_skills_root(self) -> Path:
+        return self.hermes_home / "skills"
+
+    @property
+    def hermes_config_path(self) -> Path:
+        return self.hermes_home / "config.yaml"
+
+    @property
+    def trae_root(self) -> Path:
+        return self.home / ".trae-cn" / "skills"
+
+    @property
+    def bin_dir(self) -> Path:
+        return self.root / "bin"
+
+    def cli_path(self, executable: str) -> Path:
+        suffix = ".cmd" if os.name == "nt" else ""
+        return self.bin_dir / f"{executable}{suffix}"
+
+    def env(self) -> dict[str, str]:
+        return {
+            "HOME": str(self.home),
+            "USERPROFILE": str(self.home),
+            "APPDATA": str(self.xdg_config_home),
+            "LOCALAPPDATA": str(self.xdg_data_home),
+            "XDG_CONFIG_HOME": str(self.xdg_config_home),
+            "XDG_DATA_HOME": str(self.xdg_data_home),
+            "XDG_STATE_HOME": str(self.xdg_state_home),
+            "SKILL_MANAGER_HERMES_HOME": str(self.hermes_home),
+            "SKILL_MANAGER_APPLICATIONS_DIR": str(self.root / "applications"),
+            "HERMES_HOME": str(self.hermes_home),
+            "PATH": str(self.bin_dir),
+        }
+
+
+def create_fake_home_spec(root: Path, *, seed_openclaw_state: bool = True) -> FakeHomeSpec:
+    spec = FakeHomeSpec(
+        root=root,
+        home=root / "home",
+        xdg_config_home=root / "config",
+        xdg_data_home=root / "data",
+        xdg_state_home=root / "state",
+    )
+    for path in (
+        spec.skills_store_root,
+        spec.codex_root,
+        spec.codex_legacy_root,
+        spec.claude_root,
+        spec.cursor_root,
+        spec.opencode_root,
+        spec.trae_root,
+        spec.openclaw_managed_root,
+        spec.hermes_skills_root,
+        spec.xdg_state_home,
+        spec.bin_dir,
+    ):
+        path.mkdir(parents=True, exist_ok=True)
+
+    for executable in ("codex", "claude", "cursor-agent", "opencode", "hermes", "trae"):
+        write_cli_stub(spec.cli_path(executable), executable)
+    if seed_openclaw_state:
+        write_cli_stub(spec.cli_path("openclaw"), "openclaw")
+    return spec
+
+
+def write_cli_stub(path: Path, executable: str) -> None:
+    if os.name == "nt":
+        script = f"""@echo off
+echo {executable}
+"""
+    else:
+        script = f"""#!/bin/sh
+printf '%s\\n' '{executable}'
+"""
+    path.write_text(script, encoding="utf-8")
+    if os.name != "nt":
+        path.chmod(0o755)
+
+
+def seed_macos_app(path: Path, *, bundle_identifier: str, executable: str = "App") -> None:
+    executable_path = path / "Contents" / "MacOS" / executable
+    executable_path.parent.mkdir(parents=True, exist_ok=True)
+    executable_path.write_text("#!/bin/sh\nexit 0\n", encoding="utf-8")
+    executable_path.chmod(0o755)
+    info_path = path / "Contents" / "Info.plist"
+    with info_path.open("wb") as handle:
+        plistlib.dump(
+            {
+                "CFBundleIdentifier": bundle_identifier,
+                "CFBundleExecutable": executable,
+            },
+            handle,
+        )
+
+
+def seed_skill_package(
+    root: Path,
+    directory_name: str,
+    declared_name: str,
+    *,
+    body: str = "",
+    description: str | None = None,
+    support_files: dict[str, str] | None = None,
+    source_kind: str | None = None,
+    source_locator: str | None = None,
+) -> Path:
+    package_root = root / directory_name
+    package_root.mkdir(parents=True, exist_ok=True)
+    frontmatter = ["---", f"name: {declared_name}"]
+    if description is not None:
+        frontmatter.append(f"description: {description}")
+    if source_kind is not None:
+        frontmatter.append(f"source_kind: {source_kind}")
+    if source_locator is not None:
+        frontmatter.append(f"source_locator: {source_locator}")
+    frontmatter.append("---")
+    skill_md = "\n".join(frontmatter + ["", f"# {declared_name}", "", body or "Bootstrap test fixture.", ""])
+    (package_root / "SKILL.md").write_text(skill_md, encoding="utf-8")
+    for relative_path, contents in (support_files or {}).items():
+        target = package_root / relative_path
+        target.parent.mkdir(parents=True, exist_ok=True)
+        target.write_text(contents, encoding="utf-8")
+    return package_root
+
+
+def seed_store_manifest(spec: FakeHomeSpec, entries: list[SkillStoreEntry]) -> None:
+    write_skill_store_manifest(
+        spec.skills_store_root.parent / "manifest.json",
+        SkillStoreManifest(entries=tuple(entries)),
+    )
+
+
+def seed_malformed_shared_directory(spec: FakeHomeSpec, directory_name: str) -> None:
+    broken = spec.skills_store_root / directory_name
+    broken.mkdir(parents=True, exist_ok=True)
+    (broken / "notes.txt").write_text("missing SKILL.md", encoding="utf-8")
+
+
+def seed_mixed_fixture(spec: FakeHomeSpec) -> None:
+    shared_audit = seed_skill_package(
+        spec.skills_store_root,
+        "shared-audit",
+        "Shared Audit",
+        body="Shared package fixture.",
+        support_files={"assets/policy.txt": "shared-policy"},
+    )
+    seed_store_manifest(
+        spec,
+        [
+            SkillStoreEntry(
+                package_dir="shared-audit",
+                declared_name="Shared Audit",
+                source_kind="github",
+                source_locator="github:example-org/shared-audit",
+                revision=_package_revision(shared_audit),
+            )
+        ],
+    )
+
+    shared_support = {"notes.md": "same bytes across harnesses"}
+    seed_skill_package(spec.codex_legacy_root, "trace-lens", "Trace Lens", body="trace", support_files=shared_support)
+    seed_skill_package(spec.claude_root, "trace-lens-copy", "Trace Lens", body="trace", support_files=shared_support)
+    seed_skill_package(spec.opencode_root, "policy-kit", "Policy Kit", body="opencode policy")
+
+    seed_malformed_shared_directory(spec, "broken-shared")
+
+
+def seed_divergent_source_fixture(spec: FakeHomeSpec) -> None:
+    source_locator = "github:example-org/policy-kit"
+    seed_skill_package(
+        spec.codex_legacy_root,
+        "policy-kit",
+        "Policy Kit",
+        body="policy from codex",
+        source_kind="github",
+        source_locator=source_locator,
+    )
+    seed_skill_package(
+        spec.claude_root,
+        "policy-kit-copy",
+        "Policy Kit",
+        body="policy from claude",
+        source_kind="github",
+        source_locator=source_locator,
+    )
+
+
+def seed_shared_only_fixture(spec: FakeHomeSpec) -> None:
+    shared_audit = seed_skill_package(
+        spec.skills_store_root,
+        "shared-audit",
+        "Shared Audit",
+        body="Shared package fixture.",
+    )
+    seed_store_manifest(
+        spec,
+        [
+            SkillStoreEntry(
+                package_dir="shared-audit",
+                declared_name="Shared Audit",
+                source_kind="github",
+                source_locator="github:example-org/shared-audit",
+                revision=_package_revision(shared_audit),
+            )
+        ],
+    )
+
+
+def seed_managed_linked_fixture(spec: FakeHomeSpec) -> None:
+    seed_shared_only_fixture(spec)
+    target = spec.skills_store_root / "shared-audit"
+    codex_link = spec.codex_root / "shared-audit"
+    create_directory_link(codex_link, target)
+
+
+def _package_revision(path: Path) -> str:
+    revision, _ = fingerprint_package(path)
+    return revision

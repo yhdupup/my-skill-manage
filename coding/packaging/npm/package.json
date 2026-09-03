@@ -1,0 +1,31 @@
+{
+  "name": "skill-manager-local",
+  "version": "0.3.1",
+  "description": "Installer wrapper for the skill-manager native release artifact.",
+  "license": "MIT",
+  "private": false,
+  "bin": {
+    "skill-manager": "bin/skill-manager.js"
+  },
+  "scripts": {
+    "preinstall": "node scripts/preinstall.js",
+    "prepack": "node scripts/sync-license.js",
+    "postpack": "node scripts/sync-license.js --clean",
+    "postinstall": "node scripts/install.js"
+  },
+  "files": [
+    "LICENSE",
+    "release-targets.json",
+    "bin",
+    "scripts"
+  ],
+  "os": [
+    "darwin",
+    "linux",
+    "win32"
+  ],
+  "cpu": [
+    "arm64",
+    "x64"
+  ]
+}
